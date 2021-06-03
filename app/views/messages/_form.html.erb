@@ -11,14 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <script>
+    
+    let submit_button = document.querySelector("#submit");
+    let form = document.querySelector("form");
+    const submit = () => {
+      form.submit();
+    };
+
+    const handleEnter = (e) => {
+      if(e.keyCode === 13){
+        e.preventDefault();
+        submit();
+        document.querySelector("#message_text").value = "";
+      }
+    }
+  </script>
+
+  <div class="field" onkeydown="handleEnter(event)">
     <%= form.label :text %>
     <%= form.text_field :text %>
   </div>
 
   <%= form.hidden_field :room_id, value: @room_id %>
 
-  <div class="actions">
+  <div class="actions" id="submit">
     <%= form.submit %>
   </div>
+
+  
 <% end %>
