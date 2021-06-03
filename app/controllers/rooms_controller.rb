@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
   # GET /rooms/1 or /rooms/1.json
   def show
     @room_id = params[:id]
+    params[:room] = @room_id
     @message = Message.new
     @messages = @room.messages.all
   end

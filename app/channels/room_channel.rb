@@ -1,8 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    p "FIX THIS PLEASE"
-    room = Room.find 1
+    room = Room.find params[:room_id].to_i
     stream_for room
   end
 

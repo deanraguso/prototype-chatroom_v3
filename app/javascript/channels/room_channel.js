@@ -1,6 +1,9 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("RoomChannel", {
+let url = window.location.href;
+let room_id = parseInt(url.substring(url.search("rooms/") + 6));
+
+consumer.subscriptions.create({"channel":"RoomChannel", "room_id":room_id}, {
   connected() {
     // Called when the subscription is ready for use on the server
   },
